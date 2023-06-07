@@ -9,14 +9,6 @@ class DataSourceService():
         self.db = createClient()
 
     def create_data_source(self, data_source):
-        """
-        Add code to load the csv file
-        Save the csv file as file.csv in the scripts folder
-        """
-        os.chdir('app/scripts')
-        latestCommit = subprocess.run(
-            ['bash', 'dvc_upload.sh'], capture_output=True, text=True)
-        data_source['hash'] = latestCommit
         return create(self.db, data_source_table, data_source)
 
     def get_data_source_by_id(self, data_source):
