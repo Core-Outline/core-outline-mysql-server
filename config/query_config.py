@@ -1,5 +1,5 @@
 import operator
-queries_table = 'Queries'
+queries_table = 'queries'
 
 query_actions = {
     'less_than': '<',

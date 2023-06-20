@@ -1,4 +1,4 @@
-from app.services.data_source_service import DataSourceService
+from app_container.services.data_source_service import DataSourceService
 
 
 class DataSource:

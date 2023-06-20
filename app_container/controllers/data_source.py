@@ -1,23 +1,28 @@
 from flask import Blueprint, request, jsonify
-from app.models.data_source import DataSource
+from app_container.models.data_source import DataSource
 
 data_source_controller = Blueprint('data_source', __name__)
 dataSource = DataSource()
 
 
-@data_source_controller.route('/data-source', methods=['GET'])
+@data_source_controller.route('/', methods=['GET'])
 def fetch_data_sources():
     params = dict(request.args)
-    return jsonify(dataSource.get(params))
+    obj = dataSource.fetch(params)
+    obj = [{**item, "_id": str(item['_id'])} for item in obj]
+    return jsonify(obj)
 
 
 @data_source_controller.route('/create-data-source', methods=['POST'])
 def create_data_source():
     req = request.get_json()
+    req['type'] = 'mysql'
     return jsonify(dataSource.create(req))
 
 
 @data_source_controller.route('/get-data-source', methods=['GET'])
 def get_data_source():
     params = dict(request.args)
-    return jsonify(dataSource.get(params))
+    obj = dataSource.get(params)
+    obj['_id'] = str(obj['_id'])
+    return jsonify(obj)

@@ -1,4 +1,4 @@
-from app.repositories.database import createClient, create, get, fetch
+from app_container.repositories.database import createClient, create, get, fetch
 
 
 class Database():
