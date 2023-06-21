@@ -8,6 +8,7 @@ dataSource = DataSource()
 @data_source_controller.route('/', methods=['GET'])
 def fetch_data_sources():
     params = dict(request.args)
+    print(params)
     obj = dataSource.fetch(params)
     obj = [{**item, "_id": str(item['_id'])} for item in obj]
     return jsonify(obj)
@@ -15,7 +16,9 @@ def fetch_data_sources():
 
 @data_source_controller.route('/create-data-source', methods=['POST'])
 def create_data_source():
+    print(request.data)
     req = request.get_json()
+    print(req)
     req['type'] = 'mysql'
     return jsonify(dataSource.create(req))
 

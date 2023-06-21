@@ -7,6 +7,7 @@ query = Query()
 
 @query_controller.route('/', methods=['GET'])
 def fetch_queries():
+    print(request.args)
     params = dict(request.args)
     obj = query.fetch(params)
     print(obj)
