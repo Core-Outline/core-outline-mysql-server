@@ -29,3 +29,10 @@ def get_data_source():
     obj = dataSource.get(params)
     obj['_id'] = str(obj['_id'])
     return jsonify(obj)
+
+@data_source_controller.route('/get-db-columns-tables', methods=['GET'])
+def get_data_source_details():
+    params = dict(request.args)
+    obj = dataSource.get_details(params)
+    print(obj)
+    return jsonify(obj)

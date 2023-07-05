@@ -20,3 +20,6 @@ class DataSource:
 
     def fetch(self, data_source):
         return self.dataSourceService.fetch_data_source_by_parameter(data_source)
+
+    def get_details(self, data_source):
+        return self.dataSourceService.get_data_source_details(data_source)
